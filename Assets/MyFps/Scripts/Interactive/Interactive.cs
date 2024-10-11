@@ -1,43 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 namespace MyFps
 {
-    public class DoorCellOpen : MonoBehaviour
+    // 인터렉티브 액션을 구현하는 클래스
+    public abstract class Interactive : MonoBehaviour
     {
+        protected abstract void DoAction();
+
         #region Variables
+        private float theDistance;
+
         // action UI
         public GameObject actionUI;
         public TextMeshProUGUI actionText;
-        [SerializeField] private string action = "Open the door";
+        [SerializeField] private string action = "Action Text";
         public GameObject extraCross;
 
-        private float theDistance;
+        // action
 
-        private Animator animator;
-        private Collider collider;
-        public AudioSource audioSource;
-        // 
         #endregion
-
-        private void Start()
-        {
-            animator = GetComponent<Animator>();
-            collider = GetComponent<Collider>();
-        }
 
         private void Update()
         {
             theDistance = PlayerCasting.distanceFromTarget;
         }
 
-        // 마우스를 가져가면 액션 UI를 보여준다
         private void OnMouseOver()
         {
             // 거리가 2이하 일때
-            if(theDistance < 2f)
+            if (theDistance < 2f)
             {
                 ShowActionUI();
 
@@ -45,11 +39,8 @@ namespace MyFps
                 {
                     HideActionUI();
 
-                    // 문이 열리는 액션
-                    animator.SetBool("isOpen", true);
-                    collider.enabled = false;
-                    audioSource.Play();
-
+                    // Action
+                    DoAction();
                 }
             }
             else
@@ -58,11 +49,9 @@ namespace MyFps
             }
         }
 
-        // 마우스가 벗어나면 액션 UI를 감춘다
         private void OnMouseExit()
         {
-            actionUI.SetActive(false);
-            //actionText.text = "";
+
         }
 
         void ShowActionUI()
