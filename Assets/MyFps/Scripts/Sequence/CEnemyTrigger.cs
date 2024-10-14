@@ -7,7 +7,11 @@ namespace MyFps
     public class CEnemyTrigger : MonoBehaviour
     {
         #region Variables
-        public GameObject theDoor;
+        public GameObject theDoor;  // 문
+        public AudioSource doorBang;    // 문 열기
+
+        public AudioSource jumpScare;   // 적 등장 사운드
+        public GameObject theRobot;     // 적
         #endregion
         private void OnTriggerEnter(Collider other)
         {
@@ -21,7 +25,18 @@ namespace MyFps
             theDoor.GetComponent<Animator>().SetBool("isOpen", true);
             theDoor.GetComponent<BoxCollider>().enabled = false;
 
-            yield return null;
+            // 문 사운드
+            doorBang.Play();
+
+            // Enemy 활성화
+            theRobot.SetActive(true);
+
+            yield return new WaitForSeconds(1f);
+
+            // Enemy 등장 사운드
+            jumpScare.Play();
+
+            
         }
     }
 }
