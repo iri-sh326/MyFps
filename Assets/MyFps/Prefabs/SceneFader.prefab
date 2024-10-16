@@ -186,7 +186,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6951270625985024315}
-  - component: {fileID: 1484040735004858218}
+  - component: {fileID: 8928916444915540713}
   m_Layer: 0
   m_Name: SceneFader
   m_TagString: Untagged
@@ -210,7 +210,7 @@ Transform:
   - {fileID: 267127844311422848}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1484040735004858218
+--- !u!114 &8928916444915540713
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7628611268234661942}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 695ec72538f798e458d511a21f8db35c, type: 3}
+  m_Script: {fileID: 11500000, guid: 75ae4dd3310cd9742888d140ca4fcc62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1264706443813071528}
