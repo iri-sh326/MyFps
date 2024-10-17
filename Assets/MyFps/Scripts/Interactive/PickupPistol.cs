@@ -13,6 +13,8 @@ namespace MyFps
         public GameObject arrow;
 
         public GameObject enemyTrigger;
+        public GameObject ammoBox;
+        public GameObject ammoUI;
         #endregion
 
    
@@ -21,6 +23,9 @@ namespace MyFps
         {
             realPistol.SetActive(true);
             arrow.SetActive(false);
+
+            ammoBox.SetActive(true);
+            actionUI.SetActive(true);
 
             enemyTrigger.SetActive(true);
 

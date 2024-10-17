@@ -1,10 +1,11 @@
+using MyFps;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MyFps
+namespace MySample
 {
-    public class PistolShoot : MonoBehaviour
+    public class ShootingTest : MonoBehaviour
     {
         #region Variables
         private Animator animator;
@@ -16,11 +17,16 @@ namespace MyFps
         public Transform firePoint;
 
         // 공격
-        private float attackDamage = 5f;
+        [SerializeField] private float attackDamage = 5f;
 
         // 연사 딜레이
         [SerializeField] private float fireDelay = 0.5f;
         private bool isFire = false;
+
+        // 탄착 임팩트 효과
+        public GameObject hitImpactprefab;
+
+        [SerializeField] private float impactForce = 5f;
 
         #endregion
         // Start is called before the first frame update
@@ -47,15 +53,43 @@ namespace MyFps
             // 플레이어 근처 100 안에 적이 있으면 적에게 데미지를 준다.
             float maxDistance = 100f;
             RaycastHit hit;
-            if(Physics.Raycast(firePoint.position, firePoint.TransformDirection(Vector3.forward), out hit, maxDistance))
+            if (Physics.Raycast(firePoint.position, firePoint.TransformDirection(Vector3.forward), out hit, maxDistance))
             {
                 // 적에게 데미지를 준다
                 Debug.Log($"{hit.transform.name}에게 데미지를 준다");
-                RobotController robot = hit.transform.GetComponent<RobotController>();
-                if( robot != null)
+
+                // 임팩트 효과
+                GameObject eff = Instantiate(hitImpactprefab, hit.point, Quaternion.LookRotation(hit.normal));
+                Destroy(eff, 2f);
+
+                if(hit.rigidbody != null)
                 {
-                    robot.TakeDamage(attackDamage);
+                    hit.rigidbody.AddForce(-hit.normal * impactForce, ForceMode.Impulse);
                 }
+
+                // 데미지 주기
+                IDamageable damageable = hit.transform.GetComponent<IDamageable>();
+                if(damageable != null)
+                {
+                    damageable.TakeDamage(attackDamage);
+                }
+                //RobotController robot = hit.transform.GetComponent<RobotController>();
+                //if (robot != null)
+                //{
+                //    robot.TakeDamage(attackDamage);
+                //}
+
+                EnemyTest enemy = hit.transform.GetComponent<EnemyTest>();
+                if(enemy != null)
+                {
+                    enemy.TakeDamage(attackDamage);
+                }
+
+                //ZombieTest zombie = hit.transform.GetComponent<ZombieTest>();
+                //if (enemy != null)
+                //{
+                //    enemy.TakeDamage(attackDamage);
+                //}
             }
 
             // 슛 효과 - VFX, SFX
