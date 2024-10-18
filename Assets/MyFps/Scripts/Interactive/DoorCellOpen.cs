@@ -9,7 +9,7 @@ namespace MyFps
     {
         #region Variables
         private Animator animator;
-        private Collider collider;
+        private Collider m_Collider;
         public AudioSource audioSource;
         // 
         #endregion
@@ -17,13 +17,13 @@ namespace MyFps
         private void Start()
         {
             animator = GetComponent<Animator>();
-            collider = GetComponent<Collider>();
+            m_Collider = GetComponent<BoxCollider>();
         }
 
         protected override void DoAction()
         {
             animator.SetBool("isOpen", true);
-            collider.enabled = false;
+            GetComponent<Collider>().enabled = false;
             audioSource.Play();
         }
     }

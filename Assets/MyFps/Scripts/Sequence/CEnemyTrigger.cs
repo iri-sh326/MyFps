@@ -10,7 +10,9 @@ namespace MyFps
         public GameObject theDoor;  // 문
         public AudioSource doorBang;    // 문 열기
 
-        public AudioSource jumpScare;   // 적 등장 사운드
+        public AudioSource bgm01;   // 메인씬 1 배경음
+        public AudioSource bgm02;   // 적 등장 배경음
+
         public GameObject theRobot;     // 적
         #endregion
         private void OnTriggerEnter(Collider other)
@@ -26,6 +28,7 @@ namespace MyFps
             theDoor.GetComponent<BoxCollider>().enabled = false;
 
             // 문 사운드
+            bgm01.Stop();
             doorBang.Play();
 
             // Enemy 활성화
@@ -34,7 +37,7 @@ namespace MyFps
             yield return new WaitForSeconds(1f);
 
             // Enemy 등장 사운드
-            jumpScare.Play();
+            bgm02.Play();
 
             // 타겟을 향해 걷기
             RobotController robot = theRobot.GetComponent<RobotController>();
