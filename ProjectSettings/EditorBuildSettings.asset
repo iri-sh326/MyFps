@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
+    path: Assets/MyFps/Scenes/Title.unity
+    guid: befe1940ac8884b46a61c045997605f7
+  - enabled: 1
+    path: Assets/MyFps/Scenes/MainMenu.unity
+    guid: 7cd6c9c30e1a7e74f928d174282825d6
+  - enabled: 1
     path: Assets/MyFps/Scenes/MainScene01.unity
     guid: 53d4773c10ca9b543980610e8dfde082
   - enabled: 1
@@ -17,4 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MyFps/Scenes/GameOver.unity
     guid: c0393366dbf80254d81212f87005e4d2
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7,
+      type: 2}
