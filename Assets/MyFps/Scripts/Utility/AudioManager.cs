@@ -68,6 +68,11 @@ namespace MyFps
             sound.source.Play();
         }
 
+        public void StopBgm()
+        {
+            Stop(bgmSound);
+        }
+
         public void Stop(string name)
         {
             Sound sound = null;
