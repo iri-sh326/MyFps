@@ -20,7 +20,7 @@ namespace MyFps
         public GameObject extraCross;
 
         // true이면 interactive 정지
-        protected bool unInteractive = false;
+        [SerializeField] protected bool unInteractive = false;
         #endregion
 
         private void Update()
@@ -51,7 +51,7 @@ namespace MyFps
 
         private void OnMouseExit()
         {
-
+            HideActionUI();
         }
 
         void ShowActionUI()

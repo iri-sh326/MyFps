@@ -11,7 +11,8 @@ namespace MyFps
 
         protected override void DoAction()
         {
-            // key Item ¿˙¿Â
+            // LEFTEYE ∆€¡Ò æ∆¿Ã≈€ »πµÊ
+            PlayerStats.Instance.AcquirePuzzleItem(PuzzleKey.LEFTEYE_KEY);
 
             // ≈≥
             Destroy(gameObject);

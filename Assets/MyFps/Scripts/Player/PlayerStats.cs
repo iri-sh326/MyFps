@@ -8,6 +8,7 @@ namespace MyFps
     public enum PuzzleKey
     {
         ROOM01_KEY,
+        LEFTEYE_KEY,
         MAX_KEY         // 퍼즐 아이템 갯수
     }
 
@@ -20,7 +21,7 @@ namespace MyFps
         public int AmmoCount
         {
             get { return ammoCount; }
-            set { ammoCount = value; }
+            private set { ammoCount = value; }
         }
 
         // 게임 퍼즐 아이템 키
