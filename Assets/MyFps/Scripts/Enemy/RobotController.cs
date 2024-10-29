@@ -16,7 +16,6 @@ namespace MyFps
     {
         #region Variables
         public GameObject thePlayer;
-
         private Animator animator;
 
         // 로봇 현재 상태
@@ -37,7 +36,7 @@ namespace MyFps
         // 공격
         [SerializeField] private float attackRange = 1.5f;      // 공격 가능 범위
         [SerializeField] private float attackDamage = 5f;       // 공격 데미지
-        private float attackTimer = 2f;
+        [SerializeField] private float attackTimer = 2f;        // 공격 속도
         private float countdown;
 
         // 배경음
@@ -108,10 +107,10 @@ namespace MyFps
         private void Attack()
         {
             Debug.Log("플레이어에게 데미지를 준다");
-            PlayerController player = thePlayer.GetComponent<PlayerController>();
-            if( player != null )
+            IDamageable damageable = thePlayer.GetComponent<IDamageable>();
+            if( damageable != null )
             {
-                player.TakeDamage(attackDamage);
+                damageable.TakeDamage(attackDamage);
             }
         }
 

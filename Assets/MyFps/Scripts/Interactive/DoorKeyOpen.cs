@@ -15,7 +15,7 @@ namespace MyFps
         protected override void DoAction()
         {
             // ¹®¿­±â
-            if (PlayerStats.Instance.HasPuzzleItem(PuzzleKey.ROOM01_KEY))
+            if (PlayerStats.Instance.HasPuzzleItem  (PuzzleKey.ROOM01_KEY))
             {
                 OpenDoor();
             }
